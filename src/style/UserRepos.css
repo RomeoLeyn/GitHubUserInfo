@@ -1,0 +1,58 @@
+.repos-list-container {
+    margin: 20px 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.repo-item {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 8px 0;
+    background-color: #f6f8fa;
+    transition: background-color 0.2s ease;
+}
+
+.repo-item:hover {
+    background-color: #e1e4e8;
+}
+
+.repo-item a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0366d6;
+    text-decoration: none;
+}
+
+.repo-item a:hover {
+    text-decoration: underline;
+}
+
+.repo-item p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #586069;
+}
+
+.repos-button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.repos-button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
