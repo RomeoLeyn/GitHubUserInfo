@@ -2,26 +2,20 @@
 import { useEffect, useState } from "react";
 
 // API
-import { getAllUserRepos, getUserByName } from "../api/user";
+import { getUserByName } from "../api/user";
 
 // Styles
 import '../style/UserInfo.css';
+import { UserRepos } from "./UserRepos";
 
 export const UserInfo = () => {
     const [name, setName] = useState('');
     const [inputValue, setInputValue] = useState('');
     const [profile, setProfile] = useState({});
-    const [repos, setRepos] = useState([]);
 
     const fetchData = async (username) => {
         const response = await getUserByName(username);
-        console.log(response.data);
         setProfile(response.data);
-    }
-
-    const getAllUSerRepos = async () => {
-        const response = await getAllUserRepos(name);
-        setRepos(response.data);
     }
 
     useEffect(() => {
@@ -72,11 +66,14 @@ export const UserInfo = () => {
                     </div>
 
                     <div className="repos-container">
-                        <div className="repos-button-container">
-                            <button onClick={getAllUSerRepos} className="repos-button"> View all user repositories</button>
-                        </div>
+                        {/* <div className="repos-button-container">
+                            <button onClick={getAllRepos} className="repos-button"> View all user repositories</button>
+                        </div> */}
 
-                        <div className="repos-list-container">
+                        <div>
+                            {profile != null ? (<UserRepos name={name} />) : (<UserRepos repos={""} />)}
+                        </div>
+                        {/* <div className="repos-list-container">
                             <ul>
                                 {repos.map((repo) => (
                                     <li key={repo.id} className="repo-item">
@@ -87,7 +84,8 @@ export const UserInfo = () => {
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                            <button onClick={getAllUSerRepos} className="repos-button"> Next page</button>
+                        </div> */}
 
                     </div>
                 </div>
