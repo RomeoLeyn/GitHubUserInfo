@@ -1,6 +1,14 @@
+// Hooks
 import { useEffect, useState } from "react";
+
+// API
 import { getAllUserRepos, getNexPageUserEvents } from "../api/user";
+
+// Constants
 import { PER_PAGE } from "../constants/constants";
+
+// Styles
+import '../style/UserRepos.css';
 
 export const UserRepos = ({ name }) => {
 
@@ -41,11 +49,21 @@ export const UserRepos = ({ name }) => {
                                 <a href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.name}</a>
                                 <p>{repo.language}</p>
                                 <p>{repo.description}</p>
+                                <p>Stars: {repo.stargazers_count}</p>
+                                <p>Forks: {repo.forks_count}</p>
+                                <p>Watchers: {repo.watchers_count}</p>
+                                <p>Issues: {repo.open_issues_count}</p>
+                                <p>Created: {new Date(repo.created_at).toLocaleString()}</p>
+                                <p>Updated: {new Date(repo.updated_at).toLocaleString()}</p>
+                                <p>Pushed: {new Date(repo.pushed_at).toLocaleString()}</p>
+                                <p>Last commit: {new Date(repo.pushed_at).toLocaleString()}</p>
+                                <p>Default branch: {repo.default_branch}</p>
+                                <p>Status: {repo.visibility}</p>
                             </div>
                         </li>
                     ))}
                 </ul>
-                <button onClick={nextPageUserRepos} className="repos-button"> Next page</button>
+                <button onClick={nextPageUserRepos} className="repos-button"> Load more</button>
             </div>
         </>
     )

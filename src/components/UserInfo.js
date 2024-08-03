@@ -48,7 +48,7 @@ export const UserInfo = () => {
                                 {profile.name && <p>{profile.name}</p>}
                                 <p>Followers: {profile.followers}</p>
                                 <p>Following: {profile.following}</p>
-                                <p>Created: {profile.created_at}</p>
+                                <p>Created: {new Date(profile.created_at).toLocaleDateString()}</p>
                                 {profile.bio && <p>Bio: {profile.bio}</p>}
                                 {profile.company && <p>Company: {profile.company}</p>}
                                 {profile.location && <p>Location: {profile.location}</p>}
