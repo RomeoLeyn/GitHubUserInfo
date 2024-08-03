@@ -1,15 +1,17 @@
-import axios from "axios";
+// Hooks
 import { useEffect, useState } from "react";
 
-import '../style/GitHubProfile.css';
+// API
 import { getAllUserRepos, getUserByName } from "../api/user";
 
-export const GitHubProfile = () => {
+// Styles
+import '../style/UserInfo.css';
+
+export const UserInfo = () => {
     const [name, setName] = useState('');
     const [inputValue, setInputValue] = useState('');
     const [profile, setProfile] = useState({});
     const [repos, setRepos] = useState([]);
-
 
     const fetchData = async (username) => {
         const response = await getUserByName(username);
@@ -73,7 +75,6 @@ export const GitHubProfile = () => {
                         <div className="repos-button-container">
                             <button onClick={getAllUSerRepos} className="repos-button"> View all user repositories</button>
                         </div>
-
 
                         <div className="repos-list-container">
                             <ul>
