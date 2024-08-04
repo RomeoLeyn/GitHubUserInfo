@@ -9,6 +9,7 @@ import { PER_PAGE } from "../constants/constants";
 
 // Styles
 import '../style/UserRepos.css';
+import { Repos } from "./Repos";
 
 export const UserRepos = ({ name }) => {
 
@@ -22,11 +23,9 @@ export const UserRepos = ({ name }) => {
 
     const nextPageUserRepos = async () => {
         const response = await getNexPageUserEvents(name, page, PER_PAGE);
-        console.log(response.data);
-        setRepos(prevRepos => [...prevRepos, ...response.data]);
+        const reposData = response.data.map(event => event.repo); // Витягуємо репозиторії з подій
+        setRepos(prevRepos => [...prevRepos, ...reposData]);
         setPage(prevPage => prevPage + 1);
-
-        console.log(repos);
     }
 
     useEffect(() => {
@@ -38,32 +37,13 @@ export const UserRepos = ({ name }) => {
         }
     }, [name])
 
-
     return (
         <>
             <div className="repos-list-container">
                 <ul>
-                    {repos.map((repo, index) => (
-                        <li key={`${repo.id}-${index}`} className="repo-item">
-                            <div>
-                                <a href={repo.html_url} target="_blank" rel="noopener noreferrer">{repo.name}</a>
-                                <p>{repo.language}</p>
-                                <p>{repo.description}</p>
-                                <p>Stars: {repo.stargazers_count}</p>
-                                <p>Forks: {repo.forks_count}</p>
-                                <p>Watchers: {repo.watchers_count}</p>
-                                <p>Issues: {repo.open_issues_count}</p>
-                                <p>Created: {new Date(repo.created_at).toLocaleString()}</p>
-                                <p>Updated: {new Date(repo.updated_at).toLocaleString()}</p>
-                                <p>Pushed: {new Date(repo.pushed_at).toLocaleString()}</p>
-                                <p>Last commit: {new Date(repo.pushed_at).toLocaleString()}</p>
-                                <p>Default branch: {repo.default_branch}</p>
-                                <p>Status: {repo.visibility}</p>
-                            </div>
-                        </li>
-                    ))}
+                    <Repos repos={repos} />
                 </ul>
-                <button onClick={nextPageUserRepos} className="repos-button"> Load more</button>
+                <button onClick={nextPageUserRepos} className="repos-button"> Load more </button>
             </div>
         </>
     )
