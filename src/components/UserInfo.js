@@ -30,7 +30,9 @@ export const UserInfo = () => {
     return (
         <>
             <div className="search">
-                <input className="search-input" type="text" onChange={(e) => setInputValue(e.target.value)}></input>
+                <input className="search-input" type="text" onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && setName(inputValue)}
+                ></input>
                 <button className="search-button" onClick={() => setName(inputValue)}>search</button>
             </div>
             {profile === null ? (
