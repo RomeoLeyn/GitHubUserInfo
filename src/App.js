@@ -1,7 +1,12 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
 // Components
-import { UserInfo } from './components/UserInfo';
+import { UserPage } from './pages/UserPage/UserPage';
+import { RepoPage } from './pages/RepositoryPage/RepoPage';
+
+
+
 
 function App() {
 
@@ -10,7 +15,12 @@ function App() {
 
     <div className="App">
 
-      <UserInfo />
+      {/* <UserInfo /> */}
+
+      <Routes>
+        <Route path="/" element={<UserPage />}/>
+        <Route path="/repository/:repo/:username" element={<RepoPage />}/>
+      </Routes>
 
     </div>
   );
