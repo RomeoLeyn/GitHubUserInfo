@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Repos = ({ repos }) => {
 
     console.log(repos);
@@ -20,6 +22,7 @@ export const Repos = ({ repos }) => {
                             <p><b>Last commit:</b> {new Date(repo.pushed_at).toLocaleString()}</p>
                             <p><b>Default branch:</b> {repo.default_branch}</p>
                             <p><b>Status:</b> {repo.visibility}</p>
+                            <Link to={`/repository/${repo.name}/${repo.owner.login}`}>All info</Link>
                         </div>
                     </li>
                 ))
